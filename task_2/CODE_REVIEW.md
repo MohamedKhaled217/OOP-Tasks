@@ -147,3 +147,7 @@ You have a clear **Student** and **GradeBook** design with separation of concern
 ## 7. Conclusion
 
 The OOP structure (Student + GradeBook, encapsulation, composition) is solid and easy to follow. Addressing the correctness issues (especially `getGrade`, `Total` on update, and `removeStudent`) and tightening naming and return values would make this a strong, production-style grade book implementation.
+
+---
+## Notes
+All Bugs Mentioned Above has been fixed
