@@ -18,13 +18,13 @@ export class GradeBook {
     );
   }
 
-  findStudent(studentId: string): void {
+  findStudent(studentId: string): Student | undefined {
     let student = this.Students.find((st) => st.getStudentId() === studentId);
     if (!student) {
       console.log(`Student is not exist`);
-      return;
+      return undefined;
     }
-    console.log(student);
+    return student;
   }
 
   getClassAverage(): void {
@@ -41,15 +41,16 @@ export class GradeBook {
   }
 
   getTopStudents(count: number): void {
+    if (count <= 0) return;
     let top: Map<string, number> = new Map();
     for (let student of this.Students) {
-      top.set(student.Name , student.calculateAverage());
+      top.set(student.getStudentId(), student.calculateAverage());
     }
     let topArray = Array.from(top);
     topArray.sort((a, b) => b[1] - a[1]);
     console.log(`=== Top ${count} Students:`);
     for (let student of topArray) {
-      console.log(`${student[0]}: ${student[1]}`);
+      console.log(`${this.findStudent(student[0])?.Name}: ${student[1]}`);
       count--;
       if (!count) {
         console.log("\n");

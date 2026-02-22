@@ -3,6 +3,7 @@ export class Student {
   public Name: string = "";
   public Email: string = "";
   public Grades: Map<string, number> = new Map();
+  private Total: number = 0;
 
   constructor(StudentId: string, Name: string, Email: string) {
     this.Name = Name;
@@ -14,15 +15,20 @@ export class Student {
     return this.StudentId;
   }
 
+
   addGrade(subject: string, grade: number): void {
     if (grade >= 0 && grade <= 100) {
+      if (this.Grades.has(subject)) {
+        this.Total -= this.Grades.get(subject)!;
+      }
       this.Grades.set(subject, grade);
+      this.Total += grade;
     } else console.log(`Grade You Added isn't Accepted`);
   }
 
   getGrade(subject: string): void {
     let grade = this.Grades.get(subject);
-    if (grade) {
+    if (grade !== undefined) {
       console.log(`${subject} Grade is ${grade}`);
     } else {
       console.log(`Student Does Not attend This Course`);
@@ -33,9 +39,7 @@ export class Student {
     if (this.Grades.size === 0) {
       return 0;
     }
-    let total = 0.0;
-    for (let x of this.Grades) total += x[1];
-    return total / this.Grades.size;
+    return this.Total / this.Grades.size;
   }
 
   getLetterGrade(): string {
