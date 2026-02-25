@@ -25,7 +25,7 @@ export class RentalAgency {
     customer: Customer,
     vehicle: Vehicle,
     days: number,
-  ): Rental  {
+  ): Rental {
     const today = new Date();
     const end = new Date();
     end.setDate(today.getDate() + days);

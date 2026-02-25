@@ -13,12 +13,12 @@ The rental system is in good shape. The earlier logic bugs and typos are fixed: 
 
 ## 1. Architecture & OOP Design
 
-| Aspect | Rating | Notes |
-|--------|--------|--------|
-| **Separation of concerns** | Good | Vehicle, Customer, Rental, and Agency each have clear roles. |
-| **Encapsulation** | Good | IDs and sensitive data (e.g. license) are private; getters used where needed. |
-| **Composition** | Good | Rental composes Customer + Vehicle; Agency holds vehicles, customers, rentals. |
-| **Cohesion** | Good | Methods on each class match their responsibility. |
+| Aspect                     | Rating | Notes                                                                          |
+| -------------------------- | ------ | ------------------------------------------------------------------------------ |
+| **Separation of concerns** | Good   | Vehicle, Customer, Rental, and Agency each have clear roles.                   |
+| **Encapsulation**          | Good   | IDs and sensitive data (e.g. license) are private; getters used where needed.  |
+| **Composition**            | Good   | Rental composes Customer + Vehicle; Agency holds vehicles, customers, rentals. |
+| **Cohesion**               | Good   | Methods on each class match their responsibility.                              |
 
 ---
 
@@ -100,27 +100,27 @@ No bugs found.
 
 ## 7. What Was Fixed (since last review)
 
-| Item | Status |
-|------|--------|
-| Rental never marked active | Fixed — `createRental` sets `rental.isActive = true`. |
-| getAvailableVehicles() returning `[object Object]` | Fixed — now maps to `getVehicleInfo()` then joins. |
-| getActiveRentals() printing header when empty | Fixed — early return when no active rentals. |
-| getVeichleId typo | Fixed — `getVehicleId()` everywhere. |
-| "compeleted" typo | Fixed — "completed" in Rental. |
-| Loose equality (==) | Fixed — `===` in getCustomerRentals and displayFleet. |
-| Negative days in calculateRentalCost | Fixed — `if (days < 0) return 0`. |
+| Item                                               | Status                                                |
+| -------------------------------------------------- | ----------------------------------------------------- |
+| Rental never marked active                         | Fixed — `createRental` sets `rental.isActive = true`. |
+| getAvailableVehicles() returning `[object Object]` | Fixed — now maps to `getVehicleInfo()` then joins.    |
+| getActiveRentals() printing header when empty      | Fixed — early return when no active rentals.          |
+| getVeichleId typo                                  | Fixed — `getVehicleId()` everywhere.                  |
+| "compeleted" typo                                  | Fixed — "completed" in Rental.                        |
+| Loose equality (==)                                | Fixed — `===` in getCustomerRentals and displayFleet. |
+| Negative days in calculateRentalCost               | Fixed — `if (days < 0) return 0`.                     |
 
 ---
 
 ## 8. Ratings Breakdown
 
-| Category | Score (1–10) | Comment |
-|----------|--------------|--------|
-| **Correctness** | 8.5 | Core logic correct; optional validation (double rent, registered customer) could be added. |
-| **OOP design** | 8.5 | Good classes, encapsulation, composition. |
-| **Naming & style** | 8 | Consistent; make/model order in Vehicle is a convention choice. |
-| **Maintainability** | 8 | Clear structure; optional guards would make behavior even clearer. |
-| **Completeness** | 8 | Core flow and edge cases (negative days, empty lists) handled. |
+| Category            | Score (1–10) | Comment                                                                                    |
+| ------------------- | ------------ | ------------------------------------------------------------------------------------------ |
+| **Correctness**     | 8.5          | Core logic correct; optional validation (double rent, registered customer) could be added. |
+| **OOP design**      | 8.5          | Good classes, encapsulation, composition.                                                  |
+| **Naming & style**  | 8            | Consistent; make/model order in Vehicle is a convention choice.                            |
+| **Maintainability** | 8            | Clear structure; optional guards would make behavior even clearer.                         |
+| **Completeness**    | 8            | Core flow and edge cases (negative days, empty lists) handled.                             |
 
 **Overall: 8.2 / 10**
 
