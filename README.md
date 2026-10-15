@@ -9,8 +9,6 @@ This repository is a collection of practice exercises focused on Object-Oriented
 - Each task is independent and can be explored separately.
 
 ## Repository structure
-
-- `task_1/`, `task_2/`, ... — individual OOP exercises
 - Each task folder may contain source files, notes, or a small README explaining the challenge and how to run it.
 
 ## Skills practiced
